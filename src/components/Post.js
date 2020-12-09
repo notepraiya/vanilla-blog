@@ -16,7 +16,7 @@ const Post = postItem => {
     title.setAttribute('class', 'postTitle');
     blogPost.setAttribute('class', 'post');
     title.textContent = postItem.title;
-    blogPostContent.textContent = String(postItem.content).substring(0, 150);
+    blogPostContent.textContent = postItem.content; //String(postItem.content).substring(0, 150);
   }
 
   function _appendElements() {

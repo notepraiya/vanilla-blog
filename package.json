@@ -1,0 +1,19 @@
+{
+  "name": "vanilla-blog",
+  "version": "1.0.0",
+  "description": "vanilla js blog",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciorhan/vanilla-blog.git"
+  },
+  "author": "ciorhan&notepraiya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciorhan/vanilla-blog/issues"
+  },
+  "homepage": "https://github.com/ciorhan/vanilla-blog#readme"
+}

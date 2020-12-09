@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+}
+
+.blog {
+  margin-top: 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.blogItem {
+  width: 20vw;
+  height: 20vw;
+  border-radius: 3px;
+  border: 1px solid gray;
+  margin-bottom: 1rem;
+}

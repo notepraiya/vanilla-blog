@@ -8,7 +8,7 @@ const LoginButton = loginInfo => {
   const login = async targetUrl => {
     try {
       console.log('Logging in', targetUrl);
-
+      console.log('window.location.origin => ', window.location.origin);
       const url = new URL(window.location.origin);
       let redirectUri = config.auth0.redirectUri;
       if (url.hostname === 'localhost') redirectUri = window.location.origin;
@@ -60,20 +60,40 @@ const LoginButton = loginInfo => {
   return render();
 };
 
-let auth0;
+let auth0 = null;
 
 window.onload = async () => {
   console.log('loginButton => window.onload');
   auth0 = await createAuth0Client({
     domain: config.auth0.domain,
     client_id: config.auth0.clientId,
+    cacheLocation: 'localstorage',
   });
 
   const isAuthenticated = await auth0.isAuthenticated();
   console.log('isAuthenticated => ', isAuthenticated);
+  let user;
   if (isAuthenticated) {
     console.log(await auth0.getTokenSilently());
-    console.log(await auth0.getUser());
+    user = await auth0.getUser();
+    console.log(user);
+    console.log(user['https://notepraiya.github.io/vanilla-blog/APIKEY']);
+    // const claims = await auth0.getIdTokenClaims();
+    // console.log(claims);
+    return;
+  }
+
+  const query = window.location.search;
+  if (query.includes('code=') && query.includes('state=')) {
+    await auth0.handleRedirectCallback();
+    //updateUI();
+    console.log(await auth0.getTokenSilently());
+    user = await auth0.getUser();
+    console.log(user);
+    console.log(user['https://notepraiya.github.io/vanilla-blog/APIKEY']);
+    // const claims = await auth0.getIdTokenClaims();
+    // console.log(claims);
+    window.history.replaceState({}, document.title, '/');
   }
 };
 

@@ -1,3 +1,8 @@
+:root {
+  --blue: #00acee;
+  --salmon: #fa8072;
+}
+
 * {
   margin: 0;
   font-family: 'Rubik', sans-serif;
@@ -36,7 +41,7 @@
 .profileHeart {
   margin-top: 1.5rem;
   font-size: 2rem;
-  color: #00acee;
+  color: var(--blue);
 }
 
 .profileHeart:hover {
@@ -59,4 +64,27 @@
 .postTitle {
   font-family: 'Nerko One', cursive;
   font-size: 2rem;
+}
+
+.login {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+}
+
+.loginButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.loginFont {
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.loginFont:hover {
+  font-size: 3rem;
+  color: var(--salmon);
+  transition: all 0.8s ease 0s;
 }

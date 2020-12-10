@@ -80,7 +80,7 @@ window.onload = async () => {
     console.log(user['https://notepraiya.github.io/vanilla-blog/APIKEY']);
     // const claims = await auth0.getIdTokenClaims();
     // console.log(claims);
-    return;
+    //return;
   }
 
   const query = window.location.search;

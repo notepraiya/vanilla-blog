@@ -1,5 +1,6 @@
 import Profile from './components/Profile.js';
 import Posts from './components/Posts.js';
+import LoginButton from './components/LoginButton.js';
 
 import profileInfo from './data/profile.js';
 import postsFile from './data/posts.js';
@@ -9,6 +10,7 @@ const App = () => {
   let state = {
     profile: profileInfo,
     posts: postsFile.posts,
+    login: {},
   };
 
   const render = () => {
@@ -24,6 +26,8 @@ const App = () => {
         document.querySelector('.posts')
       );
     }
+
+    container.appendChild(LoginButton(state.login));
 
     return container;
   };

@@ -10,7 +10,7 @@ const LoginButton = loginInfo => {
       console.log('Logging in', targetUrl);
 
       const url = new URL(window.location.origin);
-      let redirectUri = config.redirectUri;
+      let redirectUri = config.auth0.redirectUri;
       if (url.hostname === 'localhost') redirectUri = window.location.origin;
       console.log('redirectUri => ', redirectUri);
 

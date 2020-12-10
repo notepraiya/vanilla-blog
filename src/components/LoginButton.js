@@ -93,7 +93,7 @@ window.onload = async () => {
     console.log(user['https://notepraiya.github.io/vanilla-blog/APIKEY']);
     // const claims = await auth0.getIdTokenClaims();
     // console.log(claims);
-    window.history.replaceState({}, document.title, '/');
+    window.history.replaceState({}, document.title, config.auth0.redirectUri);
   }
 };
 

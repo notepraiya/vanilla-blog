@@ -3,5 +3,6 @@ export default {
   auth0: {
     domain: 'notepraiya.us.auth0.com',
     clientId: 'N5y5vmXIEANE20pwWZbGPbnxo0FHyx0m',
+    redirectUri: 'https://notepraiya.github.io/vanilla-blog',
   },
 };

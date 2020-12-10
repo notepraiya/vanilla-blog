@@ -9,8 +9,13 @@ const LoginButton = loginInfo => {
     try {
       console.log('Logging in', targetUrl);
 
+      const url = new URL(window.location.origin);
+      let redirectUri = config.redirectUri;
+      if (url.hostname === 'localhost') redirectUri = window.location.origin;
+      console.log('redirectUri => ', redirectUri);
+
       const options = {
-        redirect_uri: window.location.origin,
+        redirect_uri: redirectUri,
       };
 
       if (targetUrl) {

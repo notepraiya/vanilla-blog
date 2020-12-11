@@ -1,4 +1,6 @@
-const Profile = data => {
+import dataApi from '../data/api.js';
+
+const Profile = () => {
   let profile;
   let profileImg;
   let profileName;
@@ -19,9 +21,6 @@ const Profile = data => {
     profileName.setAttribute('class', 'profileName');
     profileEmail.setAttribute('class', 'profileEmail');
     profileHeart.setAttribute('class', 'fas fa-heart profileHeart');
-    profileImg.src = data.picture;
-    profileName.innerHTML = data.name.first + ' ' + data.name.last;
-    profileEmail.innerHTML = data.email;
   }
 
   function _appendElements() {
@@ -35,6 +34,12 @@ const Profile = data => {
     _createElements();
     _setAttributes();
     _appendElements();
+
+    dataApi.getProfile().then(data => {
+      profileImg.src = data.picture;
+      profileName.innerHTML = data.name.first + ' ' + data.name.last;
+      profileEmail.innerHTML = data.email;
+    });
 
     return profile;
   };

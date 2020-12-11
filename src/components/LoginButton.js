@@ -83,7 +83,7 @@ window.onload = async () => {
   if (query.includes('code=') && query.includes('state=')) {
     await auth0.handleRedirectCallback();
     //updateUI();
-    setUthData();
+    setAuthData();
     window.history.replaceState({}, document.title, redirectUri);
   }
 };

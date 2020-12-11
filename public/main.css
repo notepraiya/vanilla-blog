@@ -76,6 +76,7 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+  display: none;
 }
 
 .loginFont {
@@ -84,7 +85,23 @@
 }
 
 .loginFont:hover {
-  font-size: 3rem;
+  color: var(--salmon);
+  transition: all 0.8s ease 0s;
+}
+
+.logoutButton {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  display: none;
+}
+
+.logoutFont {
+  font-size: 2rem;
+  color: var(--blue);
+}
+
+.logoutFont:hover {
   color: var(--salmon);
   transition: all 0.8s ease 0s;
 }

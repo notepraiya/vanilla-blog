@@ -7,6 +7,8 @@ const LoginButton = loginInfo => {
   let loginDiv;
   let loginButton;
   let loginFont;
+  let logoutButton;
+  let logoutFont;
 
   const login = async targetUrl => {
     try {
@@ -24,21 +26,37 @@ const LoginButton = loginInfo => {
     loginDiv = document.createElement('div');
     loginButton = document.createElement('div');
     loginFont = document.createElement('i');
+    logoutButton = document.createElement('div');
+    logoutFont = document.createElement('i');
   }
 
   function _setAttributes() {
     loginDiv.setAttribute('class', 'login');
     loginButton.setAttribute('class', 'loginButton');
-    loginFont.setAttribute('class', 'fas fa-sign-in-alt loginFont');
+    loginFont.setAttribute('class', 'fas fa-user-cog loginFont');
+    logoutButton.setAttribute('class', 'logoutButton');
+    logoutFont.setAttribute('class', 'fas fa-sign-out-alt logoutFont');
 
     loginButton.addEventListener('click', () => {
       login();
+    });
+
+    logoutButton.addEventListener('click', () => {
+      auth0.logout({
+        returnTo: redirectUri,
+      });
+      sessionStorage.clear();
+      document.querySelector('.loginButton').style.display = 'block';
+      document.querySelector('.logoutButton').style.display = 'none';
     });
   }
 
   function _appendElements() {
     loginDiv.appendChild(loginButton);
     loginButton.appendChild(loginFont);
+
+    loginDiv.appendChild(logoutButton);
+    logoutButton.appendChild(logoutFont);
   }
 
   const render = () => {
@@ -68,12 +86,14 @@ window.onload = async () => {
     let user = await auth0.getUser();
     //console.log(user);
     let APIKEY = user['https://notepraiya.github.io/vanilla-blog/APIKEY'];
-    let stor = window.sessionStorage;
-    stor.setItem('APIKEY', APIKEY);
+    sessionStorage.setItem('APIKEY', APIKEY);
+
+    document.querySelector('.loginButton').style.display = 'none';
+    document.querySelector('.logoutButton').style.display = 'block';
   };
 
   const isAuthenticated = await auth0.isAuthenticated();
-  console.log('isAuthenticated: ', isAuthenticated);
+  //console.log('isAuthenticated: ', isAuthenticated);
   if (isAuthenticated) {
     setAuthData();
     return;
@@ -82,10 +102,13 @@ window.onload = async () => {
   const query = window.location.search;
   if (query.includes('code=') && query.includes('state=')) {
     await auth0.handleRedirectCallback();
-    //updateUI();
     setAuthData();
     window.history.replaceState({}, document.title, redirectUri);
+    return;
   }
+
+  document.querySelector('.loginButton').style.display = 'block';
+  document.querySelector('.logoutButton').style.display = 'none';
 };
 
 export default LoginButton;

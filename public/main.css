@@ -1,11 +1,30 @@
 :root {
   --blue: #00acee;
   --salmon: #fa8072;
+  --color-blue: #aed9e0;
+  --color-gray: #5e6472;
+  --color-primary: #0b090a;
+  --color-secondary: #343a40;
 }
 
 * {
   margin: 0;
-  font-family: 'Rubik', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: var(--color-primary);
+  background-color: #f8f9fa;
 }
 
 .container {
@@ -47,6 +66,11 @@
 
 .profileHeart:hover {
   cursor: pointer;
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
 }
 
 .posts {
